@@ -1,1 +1,340 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Помощь - Умный дом</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+<body class="bg-light">
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-house-door-fill me-2"></i>
+                Умный дом
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="help.html">Помощь</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
+    <!-- Основной контент -->
+    <div class="container mt-5">
+        <!-- Заголовок -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body text-center py-5">
+                        <i class="bi bi-question-circle-fill text-primary fs-1 mb-3"></i>
+                        <h1 class="display-5 mb-3">Центр помощи</h1>
+                        <p class="lead text-muted">Инструкции по управлению системами умного дома</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Навигация по разделам помощи -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white">
+                        <ul class="nav nav-tabs card-header-tabs" id="helpTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="light-tab" data-bs-toggle="tab" data-bs-target="#light-help">
+                                    <i class="bi bi-lightbulb me-2"></i>Свет
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="security-tab" data-bs-toggle="tab" data-bs-target="#security-help">
+                                    <i class="bi bi-shield-lock me-2"></i>Безопасность
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="climate-tab" data-bs-toggle="tab" data-bs-target="#climate-help">
+                                    <i class="bi bi-thermometer me-2"></i>Климат
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="energy-tab" data-bs-toggle="tab" data-bs-target="#energy-help">
+                                    <i class="bi bi-lightning me-2"></i>Энергия
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content" id="helpTabsContent">
+                            <!-- Помощь по свету -->
+                            <div class="tab-pane fade show active" id="light-help" role="tabpanel">
+                                <h4 class="mb-4"><i class="bi bi-lightbulb-fill text-warning me-2"></i>Управление освещением</h4>
+                                
+                                <div class="accordion" id="lightAccordion">
+                                    <!-- Гостиная -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#livingRoomLight">
+                                                🛋️ Гостиная
+                                            </button>
+                                        </h2>
+                                        <div id="livingRoomLight" class="accordion-collapse collapse show">
+                                            <div class="accordion-body">
+                                                <div class="mb-4">
+                                                    <h6><i class="bi bi-lightbulb me-2"></i>Основная люстра</h6>
+                                                    <p><strong>Управление:</strong> Включение/выключение, регулировка яркости (0-100%)</p>
+                                                    <p><strong>Автоматизация:</strong> Расписание работы, активация по датчику движения</p>
+                                                </div>
+                                                <div class="mb-4">
+                                                    <h6><i class="bi bi-lamp me-2"></i>Бра настенные</h6>
+                                                    <p><strong>Управление:</strong> Групповое включение, создание сцен освещения</p>
+                                                    <p><strong>Режимы:</strong> Вечерний, ночной, праздничный</p>
+                                                </div>
+                                                <div class="mb-2">
+                                                    <h6><i class="bi bi-star me-2"></i>LED-лента</h6>
+                                                    <p><strong>Управление:</strong> Изменение цвета (RGB), выбор предустановок</p>
+                                                    <p><strong>Сцены:</strong> Кино, чтение, вечеринка</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Кухня -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#kitchenLight">
+                                                🍳 Кухня
+                                            </button>
+                                        </h2>
+                                        <div id="kitchenLight" class="accordion-collapse collapse">
+                                            <div class="accordion-body">
+                                                <div class="mb-4">
+                                                    <h6><i class="bi bi-lightbulb me-2"></i>Основной свет</h6>
+                                                    <p><strong>Управление:</strong> Включение/выключение, регулировка температуры света</p>
+                                                    <p><strong>Режимы:</strong> Теплый свет (2700K), холодный свет (5000K)</p>
+                                                </div>
+                                                <div class="mb-2">
+                                                    <h6><i class="bi bi-brightness-alt-high me-2"></i>Подсветка рабочей зоны</h6>
+                                                    <p><strong>Управление:</strong> Автоматическое включение при приближении</p>
+                                                    <p><strong>Таймер:</strong> Автоматическое отключение через 30 минут</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Спальня -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bedroomLight">
+                                                🛏️ Спальня
+                                            </button>
+                                        </h2>
+                                        <div id="bedroomLight" class="accordion-collapse collapse">
+                                            <div class="accordion-body">
+                                                <div class="mb-4">
+                                                    <h6><i class="bi bi-lamp-fill me-2"></i>Прикроватные светильники</h6>
+                                                    <p><strong>Управление:</strong> Индивидуальное управление каждой стороной кровати</p>
+                                                    <p><strong>Ночной режим:</strong> Автоматическое приглушение света после 22:00</p>
+                                                </div>
+                                                <div class="mb-2">
+                                                    <h6><i class="bi bi-moon-stars me-2"></i>Ночник</h6>
+                                                    <p><strong>Функции:</strong> Автоматическое включение при движении ночью</p>
+                                                    <p><strong>Режимы:</strong> Тусклый свет (10% яркости), цветные режимы для детей</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Ванная -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bathroomLight">
+                                                🚿 Ванная комната
+                                            </button>
+                                        </h2>
+                                        <div id="bathroomLight" class="accordion-collapse collapse">
+                                            <div class="accordion-body">
+                                                <div class="mb-4">
+                                                    <h6><i class="bi bi-lightbulb me-2"></i>Основной свет</h6>
+                                                    <p><strong>Автоматический режим:</strong> Включение по датчику движения, отключение через 5 минут</p>
+                                                    <p><strong>Ручное управление:</strong> Кнопки включения/выключения на панели</p>
+                                                </div>
+                                                <div class="mb-2">
+                                                    <h6><i class="bi bi-mirror me-2"></i>Подсветка зеркала</h6>
+                                                    <p><strong>Управление:</strong> Сенсорное включение, регулировка яркости</p>
+                                                    <p><strong>Особенность:</strong> Бестеневая подсветка для макияжа и бритья</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Помощь по безопасности -->
+                            <div class="tab-pane fade" id="security-help" role="tabpanel">
+                                <h4 class="mb-4"><i class="bi bi-shield-lock-fill text-danger me-2"></i>Охранная система</h4>
+                                <div class="alert alert-info">
+                                    <i class="bi bi-info-circle me-2"></i>
+                                    Все датчики работают в трех режимах: "Дома", "Выход", "Ночной"
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <div class="card h-100">
+                                            <div class="card-header bg-light">
+                                                <h6 class="mb-0">🚪 Прихожая</h6>
+                                            </div>
+                                            <div class="card-body">
+                                                <p class="card-text"><strong>Видеодомофон:</strong> Распознавание лиц, запись движения</p>
+                                                <p class="card-text"><strong>Датчик открытия двери:</strong> Уведомления при открытии</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="card h-100">
+                                            <div class="card-header bg-light">
+                                                <h6 class="mb-0">🪟 Окна</h6>
+                                            </div>
+                                            <div class="card-body">
+                                                <p class="card-text"><strong>Датчики открытия:</strong> Контроль всех окон в доме</p>
+                                                <p class="card-text"><strong>Датчики разбития стекла:</strong> Акустический контроль</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Помощь по климату -->
+                            <div class="tab-pane fade" id="climate-help" role="tabpanel">
+                                <h4 class="mb-4"><i class="bi bi-thermometer-half text-info me-2"></i>Климат-контроль</h4>
+                                <p>Система поддерживает заданную температуру в каждой комнате независимо</p>
+                                
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Комната</th>
+                                            <th>Оборудование</th>
+                                            <th>Функции</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>🛋️ Гостиная</td>
+                                            <td>Кондиционер, увлажнитель</td>
+                                            <td>Поддержание 22°C, влажность 50%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>🛏️ Спальня</td>
+                                            <td>Обогреватель, кондиционер</td>
+                                            <td>Ночной режим: 20°C</td>
+                                        </tr>
+                                        <tr>
+                                            <td>🍳 Кухня</td>
+                                            <td>Вытяжка, кондиционер</td>
+                                            <td>Автоматическое проветривание</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Помощь по энергии -->
+                            <div class="tab-pane fade" id="energy-help" role="tabpanel">
+                                <h4 class="mb-4"><i class="bi bi-lightning-charge-fill text-success me-2"></i>Управление энергией</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6>🍳 Кухня</h6>
+                                        <ul>
+                                            <li><strong>Холодильник:</strong> Эко-режим в ночное время</li>
+                                            <li><strong>Стиральная машина:</strong> Запуск в часы низкого тарифа</li>
+                                            <li><strong>Посудомоечная:</strong> Запуск по таймеру</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6>🛋️ Гостиная</h6>
+                                        <ul>
+                                            <li><strong>Телевизор:</strong> Автовыключение в 1:00</li>
+                                            <li><strong>Медиасистема:</strong> Режим ожидания с пониженным потреблением</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0"><i class="bi bi-patch-question-fill me-2"></i>Частые вопросы</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="accordion" id="faqAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                        Как создать сценарий автоматизации?
+                                    </button>
+                                </h2>
+                                <div id="faq1" class="accordion-collapse collapse">
+                                    <div class="accordion-body">
+                                        Перейдите в раздел "Настройки" → "Автоматизация" → "Создать сценарий". Выберите условие (время, датчик) и действие (включение света, изменение температуры).
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                        Что делать если устройство не отвечает?
+                                    </button>
+                                </h2>
+                                <div id="faq2" class="accordion-collapse collapse">
+                                    <div class="accordion-body">
+                                        1. Проверьте подключение устройства к Wi-Fi<br>
+                                        2. Перезагрузите устройство<br>
+                                        3. Перейдите в "Настройки" → "Устройства" → "Переподключить"<br>
+                                        4. Если проблема остается, обратитесь в техническую поддержку
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer class="mt-5 py-4 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Центр помощи</h5>
+                    <p class="mb-0">Техническая поддержка: support@smarthome.ru</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="index.html" class="btn btn-outline-light">
+                        <i class="bi bi-arrow-left me-2"></i>Вернуться на главную
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
