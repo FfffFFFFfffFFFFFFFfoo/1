@@ -1,1 +1,501 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Климат-контроль - Умный дом</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info shadow">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-house-door-fill me-2"></i>
+                Умный дом
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="index.html">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="light.html">Свет</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="security.html">Безопасность</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-white fw-bold" href="temperature.html">Климат</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="energy.html">Энергия</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="help.html">Помощь</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
+    <div class="container mt-4">
+        <!-- Общая информация -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <h1 class="display-6 mb-2"><i class="bi bi-thermometer-half text-info me-2"></i>Климат-контроль</h1>
+                                <p class="text-muted mb-0">Управление температурой и микроклиматом во всех комнатах</p>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row text-center">
+                                    <div class="col-4">
+                                        <div class="p-3">
+                                            <div class="temperature-display fs-2 fw-bold text-info">22.5°C</div>
+                                            <small class="text-muted">Средняя температура</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="p-3">
+                                            <div class="humidity-display fs-2 fw-bold text-primary">48%</div>
+                                            <small class="text-muted">Влажность</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="p-3">
+                                            <div class="air-quality-display fs-2 fw-bold text-success">85</div>
+                                            <small class="text-muted">Качество воздуха</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Управление по комнатам -->
+        <div class="row g-4">
+            <!-- Гостиная -->
+            <div class="col-lg-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-info bg-opacity-25 d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-house-door me-2"></i>Гостиная</h5>
+                        <div class="room-stats">
+                            <span class="badge bg-info me-1">22.5°C</span>
+                            <span class="badge bg-primary">50%</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!-- Кондиционер -->
+                        <div class="device-control mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6 class="mb-0"><i class="bi bi-snow2 me-2"></i>Кондиционер</h6>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="livingroomAcSwitch" checked>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Температура: <span id="livingroomTempValue">22.5°C</span></label>
+                                <input type="range" class="form-range" min="16" max="30" step="0.5" value="22.5" 
+                                       id="livingroomTemp" oninput="updateLivingroomTemp(this.value)">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Режим работы</label>
+                                <select class="form-select" id="livingroomAcMode">
+                                    <option value="cool" selected>Охлаждение</option>
+                                    <option value="heat">Обогрев</option>
+                                    <option value="dry">Осушение</option>
+                                    <option value="fan">Вентиляция</option>
+                                    <option value="auto">Авто</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Скорость вентилятора</label>
+                                <div class="btn-group w-100" role="group">
+                                    <input type="radio" class="btn-check" name="livingroomFan" id="fanLow" autocomplete="off" checked>
+                                    <label class="btn btn-outline-info btn-sm" for="fanLow">Низкая</label>
+                                    
+                                    <input type="radio" class="btn-check" name="livingroomFan" id="fanMedium" autocomplete="off">
+                                    <label class="btn btn-outline-info btn-sm" for="fanMedium">Средняя</label>
+                                    
+                                    <input type="radio" class="btn-check" name="livingroomFan" id="fanHigh" autocomplete="off">
+                                    <label class="btn btn-outline-info btn-sm" for="fanHigh">Высокая</label>
+                                    
+                                    <input type="radio" class="btn-check" name="livingroomFan" id="fanAuto" autocomplete="off">
+                                    <label class="btn btn-outline-info btn-sm" for="fanAuto">Авто</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Увлажнитель -->
+                        <div class="device-control">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6 class="mb-0"><i class="bi bi-droplet me-2"></i>Увлажнитель воздуха</h6>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="livingroomHumidifierSwitch">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Целевая влажность: <span id="livingroomHumidityValue">50%</span></label>
+                                <input type="range" class="form-range" min="30" max="70" value="50" 
+                                       id="livingroomHumidity" oninput="updateLivingroomHumidity(this.value)" disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Режим работы</label>
+                                <select class="form-select" id="livingroomHumidifierMode" disabled>
+                                    <option value="sleep">Ночной</option>
+                                    <option value="normal" selected>Нормальный</option>
+                                    <option value="turbo">Турбо</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Спальня -->
+            <div class="col-lg-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-primary bg-opacity-25 d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-moon me-2"></i>Спальня</h5>
+                        <div class="room-stats">
+                            <span class="badge bg-primary me-1">20.0°C</span>
+                            <span class="badge bg-info">45%</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!-- Обогреватель -->
+                        <div class="device-control mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6 class="mb-0"><i class="bi bi-thermometer-sun me-2"></i>Обогреватель</h6>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="bedroomHeaterSwitch" checked>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Температура: <span id="bedroomTempValue">20.0°C</span></label>
+                                <input type="range" class="form-range" min="15" max="25" step="0.5" value="20.0" 
+                                       id="bedroomTemp" oninput="updateBedroomTemp(this.value)">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Режим работы</label>
+                                <select class="form-select" id="bedroomHeaterMode">
+                                    <option value="eco">Эко-режим</option>
+                                    <option value="comfort" selected>Комфорт</option>
+                                    <option value="turbo">Турбо</option>
+                                </select>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="bedroomNightMode" checked>
+                                <label class="form-check-label" for="bedroomNightMode">
+                                    Ночной режим (18°C с 23:00 до 07:00)
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Кондиционер -->
+                        <div class="device-control">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6 class="mb-0"><i class="bi bi-wind me-2"></i>Кондиционер</h6>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="bedroomAcSwitch">
+                                </div>
+                            </div>
+                            <div class="alert alert-info py-2 mb-3">
+                                <small><i class="bi bi-info-circle me-1"></i>Автоматически включается при температуре выше 25°C</small>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Температура кондиционера</label>
+                                <input type="range" class="form-range" min="18" max="28" value="24" 
+                                       id="bedroomAcTemp" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Кухня -->
+            <div class="col-lg-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-success bg-opacity-25 d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-cup me-2"></i>Кухня</h5>
+                        <div class="room-stats">
+                            <span class="badge bg-success me-1">23.0°C</span>
+                            <span class="badge bg-warning">55%</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!-- Вытяжка -->
+                        <div class="device-control mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6 class="mb-0"><i class="bi bi-fan me-2"></i>Кухонная вытяжка</h6>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="kitchenHoodSwitch">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Скорость вентиляции</label>
+                                <div class="btn-group w-100" role="group">
+                                    <input type="radio" class="btn-check" name="kitchenHoodSpeed" id="hoodLow" autocomplete="off">
+                                    <label class="btn btn-outline-success btn-sm" for="hoodLow">Низкая</label>
+                                    
+                                    <input type="radio" class="btn-check" name="kitchenHoodSpeed" id="hoodMedium" autocomplete="off" checked>
+                                    <label class="btn btn-outline-success btn-sm" for="hoodMedium">Средняя</label>
+                                    
+                                    <input type="radio" class="btn-check" name="kitchenHoodSpeed" id="hoodHigh" autocomplete="off">
+                                    <label class="btn btn-outline-success btn-sm" for="hoodHigh">Высокая</label>
+                                </div>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="kitchenHoodAuto" checked>
+                                <label class="form-check-label" for="kitchenHoodAuto">
+                                    Автоматическое включение при готовке
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Окна -->
+                        <div class="device-control">
+                            <h6 class="mb-3"><i class="bi bi-window me-2"></i>Проветривание</h6>
+                            <div class="mb-3">
+                                <label class="form-label">Статус окон</label>
+                                <div class="alert alert-warning py-2">
+                                    <i class="bi bi-exclamation-triangle me-1"></i>
+                                    Окно на кухне открыто
+                                </div>
+                            </div>
+                            <button class="btn btn-outline-success w-100" onclick="closeKitchenWindow()">
+                                <i class="bi bi-x-circle me-1"></i>Закрыть окно
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ванная -->
+            <div class="col-lg-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-warning bg-opacity-25 d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-droplet me-2"></i>Ванная комната</h5>
+                        <div class="room-stats">
+                            <span class="badge bg-warning me-1">24.5°C</span>
+                            <span class="badge bg-danger">65%</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!-- Вентилятор -->
+                        <div class="device-control mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6 class="mb-0"><i class="bi bi-wind me-2"></i>Вытяжной вентилятор</h6>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="bathroomFanSwitch">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Режим работы</label>
+                                <select class="form-select" id="bathroomFanMode">
+                                    <option value="auto" selected>Авто (по влажности)</option>
+                                    <option value="timer">Таймер (30 мин)</option>
+                                    <option value="continuous">Постоянно</option>
+                                </select>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="bathroomFanDelay" checked>
+                                <label class="form-check-label" for="bathroomFanDelay">
+                                    Задержка выключения (15 минут после душа)
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Полотенцесушитель -->
+                        <div class="device-control">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6 class="mb-0"><i class="bi bi-thermometer me-2"></i>Полотенцесушитель</h6>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="towelWarmerSwitch" checked>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Температура</label>
+                                <div class="btn-group w-100" role="group">
+                                    <input type="radio" class="btn-check" name="towelTemp" id="towelLow" autocomplete="off">
+                                    <label class="btn btn-outline-warning btn-sm" for="towelLow">Низкая</label>
+                                    
+                                    <input type="radio" class="btn-check" name="towelTemp" id="towelMedium" autocomplete="off" checked>
+                                    <label class="btn btn-outline-warning btn-sm" for="towelMedium">Средняя</label>
+                                    
+                                    <input type="radio" class="btn-check" name="towelTemp" id="towelHigh" autocomplete="off">
+                                    <label class="btn btn-outline-warning btn-sm" for="towelHigh">Высокая</label>
+                                </div>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="towelSchedule" checked>
+                                <label class="form-check-label" for="towelSchedule">
+                                    Расписание (вкл 07:00-09:00 и 20:00-23:00)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Автоматизация и расписание -->
+        <div class="row mt-4 g-4">
+            <!-- Расписание -->
+            <div class="col-lg-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0"><i class="bi bi-calendar-week me-2"></i>Расписание температуры</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Время</th>
+                                        <th>Гостиная</th>
+                                        <th>Спальня</th>
+                                        <th>Кухня</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Ночь (00:00-07:00)</td>
+                                        <td>20°C</td>
+                                        <td>18°C</td>
+                                        <td>19°C</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Утро (07:00-09:00)</td>
+                                        <td>22°C</td>
+                                        <td>20°C</td>
+                                        <td>21°C</td>
+                                    </tr>
+                                    <tr>
+                                        <td>День (09:00-18:00)</td>
+                                        <td>21°C</td>
+                                        <td>19°C</td>
+                                        <td>22°C</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Вечер (18:00-23:00)</td>
+                                        <td>23°C</td>
+                                        <td>21°C</td>
+                                        <td>22°C</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ночь (23:00-00:00)</td>
+                                        <td>21°C</td>
+                                        <td>20°C</td>
+                                        <td>20°C</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <button class="btn btn-outline-info w-100 mt-2" data-bs-toggle="modal" data-bs-target="#scheduleModal">
+                            <i class="bi bi-pencil me-1"></i>Настроить расписание
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Экономия и статистика -->
+            <div class="col-lg-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0"><i class="bi bi-graph-up me-2"></i>Статистика и экономия</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-4 mb-3">
+                                <div class="p-3">
+                                    <div class="fs-4 fw-bold text-success">15%</div>
+                                    <small class="text-muted">Экономия энергии</small>
+                                </div>
+                            </div>
+                            <div class="col-4 mb-3">
+                                <div class="p-3">
+                                    <div class="fs-4 fw-bold text-primary">28°C</div>
+                                    <small class="text-muted">Макс. сегодня</small>
+                                </div>
+                            </div>
+                            <div class="col-4 mb-3">
+                                <div class="p-3">
+                                    <div class="fs-4 fw-bold text-info">18°C</div>
+                                    <small class="text-muted">Мин. сегодня</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Целевая экономия</label>
+                            <input type="range" class="form-range" min="0" max="30" value="15" 
+                                   id="savingTarget" oninput="updateSavingTarget(this.value)">
+                            <div class="d-flex justify-content-between">
+                                <small>Меньше экономии</small>
+                                <small>Больше экономии</small>
+                            </div>
+                        </div>
+                        <div class="alert alert-success py-2">
+                            <i class="bi bi-check-circle me-1"></i>
+                            Система работает в оптимальном режиме экономии
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer class="mt-5 py-4 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Климат-контроль</h5>
+                    <p class="mb-0">Комфортная температура: <span class="text-info">22.5°C</span></p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <button class="btn btn-outline-light me-2" onclick="optimizeClimate()">
+                        <i class="bi bi-magic me-1"></i>Оптимизировать
+                    </button>
+                    <a href="help.html#climate-help" class="btn btn-light">
+                        <i class="bi bi-question-circle me-1"></i>Помощь
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно расписания -->
+    <div class="modal fade" id="scheduleModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Настройка расписания температуры</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Настройте температуру для разных периодов времени...</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-primary">Сохранить изменения</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/climate-control.js"></script>
+</body>
+</html>
