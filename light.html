@@ -1,1 +1,423 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление светом - Умный дом</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-warning shadow">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-house-door-fill me-2"></i>
+                Умный дом
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="index.html">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-dark fw-bold" href="light.html">Свет</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="security.html">Безопасность</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="temperature.html">Климат</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="energy.html">Энергия</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="help.html">Помощь</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
+    <div class="container mt-4">
+        <!-- Заголовок и быстрые действия -->
+        <div class="row mb-4">
+            <div class="col-md-8">
+                <h1 class="display-6"><i class="bi bi-lightbulb-fill text-warning me-2"></i>Управление освещением</h1>
+                <p class="text-muted">Контролируйте свет во всех комнатах дома</p>
+            </div>
+            <div class="col-md-4">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button class="btn btn-outline-danger" onclick="turnAllOff()">
+                        <i class="bi bi-power me-1"></i>Выключить всё
+                    </button>
+                    <button class="btn btn-success" onclick="turnAllOn()">
+                        <i class="bi bi-lightbulb me-1"></i>Включить всё
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Общая статистика -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-md-3 mb-3">
+                                <div class="p-3 bg-light-warning rounded">
+                                    <i class="bi bi-lightbulb text-warning fs-4"></i>
+                                    <h6 class="mt-2 mb-1">Активных устройств</h6>
+                                    <span class="badge bg-warning fs-6">8/12</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="p-3 bg-light-success rounded">
+                                    <i class="bi bi-lightning text-success fs-4"></i>
+                                    <h6 class="mt-2 mb-1">Потребление сейчас</h6>
+                                    <span class="badge bg-success fs-6">245 Вт</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="p-3 bg-light-info rounded">
+                                    <i class="bi bi-clock text-info fs-4"></i>
+                                    <h6 class="mt-2 mb-1">Свет включен</h6>
+                                    <span class="badge bg-info fs-6">4ч 23м</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="p-3 bg-light-primary rounded">
+                                    <i class="bi bi-coin text-primary fs-4"></i>
+                                    <h6 class="mt-2 mb-1">Экономия</h6>
+                                    <span class="badge bg-primary fs-6">15%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Управление по комнатам -->
+        <div class="row g-4">
+            <!-- Гостиная -->
+            <div class="col-lg-6">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-warning bg-opacity-25 d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-house-door me-2"></i>Гостиная</h5>
+                        <span class="badge bg-warning">3/4 активно</span>
+                    </div>
+                    <div class="card-body">
+                        <!-- Люстра -->
+                        <div class="device-control mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h6 class="mb-0"><i class="bi bi-lightbulb me-2"></i>Основная люстра</h6>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="chandelierSwitch" checked>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Яркость: <span id="chandelierBrightnessValue">75%</span></label>
+                                <input type="range" class="form-range" min="0" max="100" value="75" 
+                                       id="chandelierBrightness" oninput="updateChandelierBrightness(this.value)">
+                            </div>
+                        </div>
+
+                        <!-- Бра -->
+                        <div class="device-control mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h6 class="mb-0"><i class="bi bi-lamp me-2"></i>Бра настенные</h6>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="sconcesSwitch">
+                                </div>
+                            </div>
+                            <div class="btn-group w-100" role="group">
+                                <button class="btn btn-outline-warning btn-sm">Все</button>
+                                <button class="btn btn-outline-warning btn-sm">Левое</button>
+                                <button class="btn btn-outline-warning btn-sm">Правое</button>
+                            </div>
+                        </div>
+
+                        <!-- LED лента -->
+                        <div class="device-control">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h6 class="mb-0"><i class="bi bi-palette me-2"></i>LED-лента</h6>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="ledSwitch" checked>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Цвет</label>
+                                <input type="color" class="form-control form-control-color" value="#ff9900" title="Выберите цвет">
+                            </div>
+                            <div class="btn-group w-100" role="group">
+                                <button class="btn btn-outline-primary btn-sm">Белый</button>
+                                <button class="btn btn-outline-danger btn-sm">Красный</button>
+                                <button class="btn btn-outline-success btn-sm">Зеленый</button>
+                                <button class="btn btn-outline-info btn-sm">Синий</button>
+                            </div>
+                        </div>
+
+                        <!-- Сцены освещения -->
+                        <div class="mt-4 pt-3 border-top">
+                            <h6><i class="bi bi-stars me-2"></i>Сцены освещения</h6>
+                            <div class="d-flex flex-wrap gap-2 mt-2">
+                                <button class="btn btn-outline-warning btn-sm">Кино</button>
+                                <button class="btn btn-outline-warning btn-sm">Чтение</button>
+                                <button class="btn btn-outline-warning btn-sm">Вечеринка</button>
+                                <button class="btn btn-outline-warning btn-sm">Романтика</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Кухня -->
+            <div class="col-lg-6">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-success bg-opacity-25 d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-cup me-2"></i>Кухня</h5>
+                        <span class="badge bg-success">1/2 активно</span>
+                    </div>
+                    <div class="card-body">
+                        <!-- Основной свет -->
+                        <div class="device-control mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h6 class="mb-0"><i class="bi bi-lightbulb me-2"></i>Основной свет</h6>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="kitchenMainSwitch" checked>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Яркость: <span id="kitchenBrightnessValue">60%</span></label>
+                                <input type="range" class="form-range" min="0" max="100" value="60" 
+                                       id="kitchenBrightness" oninput="updateKitchenBrightness(this.value)">
+                            </div>
+                            <div>
+                                <label class="form-label">Температура света</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="kitchenTemp" id="warmLight" checked>
+                                    <label class="form-check-label" for="warmLight">
+                                        Теплый свет (2700K)
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="kitchenTemp" id="coldLight">
+                                    <label class="form-check-label" for="coldLight">
+                                        Холодный свет (5000K)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Подсветка рабочей зоны -->
+                        <div class="device-control">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h6 class="mb-0"><i class="bi bi-brightness-alt-high me-2"></i>Подсветка рабочей зоны</h6>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="counterSwitch">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Таймер автоматического выключения</label>
+                                <select class="form-select form-select-sm">
+                                    <option value="0">Без таймера</option>
+                                    <option value="15">15 минут</option>
+                                    <option value="30" selected>30 минут</option>
+                                    <option value="60">1 час</option>
+                                </select>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="motionSensor">
+                                <label class="form-check-label" for="motionSensor">
+                                    Включать при обнаружении движения
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Спальня -->
+            <div class="col-lg-6">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-info bg-opacity-25 d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-moon me-2"></i>Спальня</h5>
+                        <span class="badge bg-info">2/3 активно</span>
+                    </div>
+                    <div class="card-body">
+                        <!-- Левый светильник -->
+                        <div class="device-control mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h6 class="mb-0"><i class="bi bi-lamp me-2"></i>Прикроватный свет (слева)</h6>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="bedLeftSwitch" checked>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Яркость: <span id="bedLeftBrightnessValue">40%</span></label>
+                                <input type="range" class="form-range" min="0" max="100" value="40" 
+                                       id="bedLeftBrightness" oninput="updateBedLeftBrightness(this.value)">
+                            </div>
+                        </div>
+
+                        <!-- Правый светильник -->
+                        <div class="device-control mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h6 class="mb-0"><i class="bi bi-lamp me-2"></i>Прикроватный свет (справа)</h6>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="bedRightSwitch" checked>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Яркость: <span id="bedRightBrightnessValue">40%</span></label>
+                                <input type="range" class="form-range" min="0" max="100" value="40" 
+                                       id="bedRightBrightness" oninput="updateBedRightBrightness(this.value)">
+                            </div>
+                        </div>
+
+                        <!-- Ночник -->
+                        <div class="device-control">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h6 class="mb-0"><i class="bi bi-stars me-2"></i>Ночник</h6>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="nightlightSwitch">
+                                </div>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="nightMode">
+                                <label class="form-check-label" for="nightMode">
+                                    Ночной режим (автовыключение через 1 час)
+                                </label>
+                            </div>
+                            <div class="mt-2">
+                                <label class="form-label">Яркость ночника</label>
+                                <input type="range" class="form-range" min="1" max="30" value="10" 
+                                       id="nightlightBrightness" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ванная -->
+            <div class="col-lg-6">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-primary bg-opacity-25 d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-droplet me-2"></i>Ванная комната</h5>
+                        <span class="badge bg-primary">Авто</span>
+                    </div>
+                    <div class="card-body">
+                        <!-- Основной свет -->
+                        <div class="device-control mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h6 class="mb-0"><i class="bi bi-lightbulb me-2"></i>Основной свет</h6>
+                                <div class="btn-group" role="group">
+                                    <input type="radio" class="btn-check" name="bathroomMode" id="bathroomAuto" autocomplete="off" checked>
+                                    <label class="btn btn-outline-primary btn-sm" for="bathroomAuto">Авто</label>
+                                    
+                                    <input type="radio" class="btn-check" name="bathroomMode" id="bathroomOn" autocomplete="off">
+                                    <label class="btn btn-outline-primary btn-sm" for="bathroomOn">Вкл</label>
+                                    
+                                    <input type="radio" class="btn-check" name="bathroomMode" id="bathroomOff" autocomplete="off">
+                                    <label class="btn btn-outline-primary btn-sm" for="bathroomOff">Выкл</label>
+                                </div>
+                            </div>
+                            <div class="alert alert-info py-2 mb-0">
+                                <small><i class="bi bi-info-circle me-1"></i>Автоматический режим: включение при движении, выключение через 5 минут</small>
+                            </div>
+                        </div>
+
+                        <!-- Подсветка зеркала -->
+                        <div class="device-control">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h6 class="mb-0"><i class="bi bi-mirror me-2"></i>Подсветка зеркала</h6>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="mirrorSwitch">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Яркость: <span id="mirrorBrightnessValue">50%</span></label>
+                                <input type="range" class="form-range" min="0" max="100" value="50" 
+                                       id="mirrorBrightness" oninput="updateMirrorBrightness(this.value)" disabled>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="mirrorSensor">
+                                <label class="form-check-label" for="mirrorSensor">
+                                    Включать при приближении к зеркалу
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Автоматизация -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0"><i class="bi bi-gear me-2"></i>Автоматизация освещения</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Расписание включения</label>
+                                    <input type="time" class="form-control" value="18:00">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Расписание выключения</label>
+                                    <input type="time" class="form-control" value="23:00">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Режим "Нет дома"</label>
+                                    <select class="form-select">
+                                        <option value="off">Выключать весь свет</option>
+                                        <option value="some">Оставлять дежурный свет</option>
+                                        <option value="random">Имитация присутствия</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn-warning w-100">
+                                    <i class="bi bi-save me-2"></i>Сохранить настройки
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer class="mt-5 py-4 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Управление освещением</h5>
+                    <p class="mb-0">Текущее время: <span id="currentTime"></span></p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <button class="btn btn-outline-light me-2" onclick="saveLightSettings()">
+                        <i class="bi bi-save me-1"></i>Сохранить сцену
+                    </button>
+                    <a href="help.html#light-help" class="btn btn-light">
+                        <i class="bi bi-question-circle me-1"></i>Помощь
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/light-control.js"></script>
+</body>
+</html>
