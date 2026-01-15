@@ -1,1 +1,473 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Охранная система - Умный дом</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger shadow">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-house-door-fill me-2"></i>
+                Умный дом
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="index.html">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="light.html">Свет</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-white fw-bold" href="security.html">Безопасность</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="temperature.html">Климат</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="energy.html">Энергия</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="help.html">Помощь</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
+    <div class="container mt-4">
+        <!-- Статус безопасности -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h1 class="display-6 mb-2"><i class="bi bi-shield-lock-fill text-danger me-2"></i>Охранная система</h1>
+                                <div class="d-flex align-items-center">
+                                    <div class="security-status me-4">
+                                        <span class="badge bg-success fs-6 p-2">
+                                            <i class="bi bi-shield-check me-1"></i>Система активирована
+                                        </span>
+                                    </div>
+                                    <div class="text-muted">
+                                        <i class="bi bi-clock-history me-1"></i>Обновлено только что
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-md-end">
+                                <div class="btn-group" role="group">
+                                    <button class="btn btn-success" onclick="setSecurityMode('home')">
+                                        <i class="bi bi-house me-1"></i>Дома
+                                    </button>
+                                    <button class="btn btn-warning" onclick="setSecurityMode('away')">
+                                        <i class="bi bi-door-closed me-1"></i>Выход
+                                    </button>
+                                    <button class="btn btn-danger" onclick="setSecurityMode('night')">
+                                        <i class="bi bi-moon me-1"></i>Ночной
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Основные датчики -->
+        <div class="row g-4">
+            <!-- Видеонаблюдение -->
+            <div class="col-lg-8">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-danger bg-opacity-25">
+                        <h5 class="mb-0"><i class="bi bi-camera-video me-2"></i>Видеонаблюдение</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <!-- Основная дверь -->
+                            <div class="col-md-6">
+                                <div class="camera-card">
+                                    <div class="camera-preview bg-dark rounded mb-2" style="height: 150px; display: flex; align-items: center; justify-content: center;">
+                                        <div class="text-center text-white">
+                                            <i class="bi bi-camera fs-1"></i>
+                                            <div>Камера #1</div>
+                                            <small>Основная дверь</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <span class="badge bg-success">Онлайн</span>
+                                        <div>
+                                            <button class="btn btn-sm btn-outline-primary">
+                                                <i class="bi bi-record-circle"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-info">
+                                                <i class="bi bi-volume-up"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Задний двор -->
+                            <div class="col-md-6">
+                                <div class="camera-card">
+                                    <div class="camera-preview bg-dark rounded mb-2" style="height: 150px; display: flex; align-items: center; justify-content: center;">
+                                        <div class="text-center text-white">
+                                            <i class="bi bi-camera fs-1"></i>
+                                            <div>Камера #2</div>
+                                            <small>Задний двор</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <span class="badge bg-success">Онлайн</span>
+                                        <div>
+                                            <button class="btn btn-sm btn-outline-primary">
+                                                <i class="bi bi-record-circle"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-secondary" disabled>
+                                                <i class="bi bi-volume-up"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Гараж -->
+                            <div class="col-md-6">
+                                <div class="camera-card">
+                                    <div class="camera-preview bg-dark rounded mb-2" style="height: 150px; display: flex; align-items: center; justify-content: center;">
+                                        <div class="text-center text-white">
+                                            <i class="bi bi-camera fs-1"></i>
+                                            <div>Камера #3</div>
+                                            <small>Гараж</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <span class="badge bg-warning">Запись</span>
+                                        <div>
+                                            <button class="btn btn-sm btn-outline-danger">
+                                                <i class="bi bi-record-circle-fill"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-info">
+                                                <i class="bi bi-volume-up"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Подъезд -->
+                            <div class="col-md-6">
+                                <div class="camera-card">
+                                    <div class="camera-preview bg-dark rounded mb-2" style="height: 150px; display: flex; align-items: center; justify-content: center;">
+                                        <div class="text-center text-white">
+                                            <i class="bi bi-camera fs-1"></i>
+                                            <div>Камера #4</div>
+                                            <small>Подъезд</small>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <span class="badge bg-secondary">Офлайн</span>
+                                        <div>
+                                            <button class="btn btn-sm btn-outline-secondary" disabled>
+                                                <i class="bi bi-record-circle"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-secondary" disabled>
+                                                <i class="bi bi-volume-up"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6><i class="bi bi-clock-history me-2"></i>Последние события</h6>
+                            <div class="list-group">
+                                <div class="list-group-item">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <small>Движение у основной двери</small>
+                                        <small class="text-muted">2 минуты назад</small>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <small>Датчик открытия окна в гостиной</small>
+                                        <small class="text-muted">15 минут назад</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Датчики по комнатам -->
+            <div class="col-lg-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-danger bg-opacity-25">
+                        <h5 class="mb-0"><i class="bi bi-sensors me-2"></i>Датчики безопасности</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="accordion" id="sensorsAccordion">
+                            <!-- Прихожая -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#hallwaySensors">
+                                        🚪 Прихожая
+                                    </button>
+                                </h2>
+                                <div id="hallwaySensors" class="accordion-collapse collapse show">
+                                    <div class="accordion-body">
+                                        <div class="sensor-item mb-3">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <span><i class="bi bi-door-closed me-2"></i>Датчик открытия двери</span>
+                                                <span class="badge bg-success">Норма</span>
+                                            </div>
+                                            <small class="text-muted">Последняя проверка: 10:23</small>
+                                        </div>
+                                        <div class="sensor-item">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <span><i class="bi bi-camera me-2"></i>Видеодомофон</span>
+                                                <span class="badge bg-success">Онлайн</span>
+                                            </div>
+                                            <small class="text-muted">Распознавание лиц активно</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Гостиная -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#livingroomSensors">
+                                        🛋️ Гостиная
+                                    </button>
+                                </h2>
+                                <div id="livingroomSensors" class="accordion-collapse collapse">
+                                    <div class="accordion-body">
+                                        <div class="sensor-item mb-3">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <span><i class="bi bi-window me-2"></i>Датчик окна #1</span>
+                                                <span class="badge bg-success">Закрыто</span>
+                                            </div>
+                                        </div>
+                                        <div class="sensor-item mb-3">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <span><i class="bi bi-window me-2"></i>Датчик окна #2</span>
+                                                <span class="badge bg-success">Закрыто</span>
+                                            </div>
+                                        </div>
+                                        <div class="sensor-item">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <span><i class="bi bi-soundwave me-2"></i>Датчик разбития стекла</span>
+                                                <span class="badge bg-success">Активен</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Кухня -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#kitchenSensors">
+                                        🍳 Кухня
+                                    </button>
+                                </h2>
+                                <div id="kitchenSensors" class="accordion-collapse collapse">
+                                    <div class="accordion-body">
+                                        <div class="sensor-item mb-3">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <span><i class="bi bi-fire me-2"></i>Датчик дыма</span>
+                                                <span class="badge bg-success">Норма</span>
+                                            </div>
+                                            <small class="text-muted">Последняя проверка: сегодня 09:00</small>
+                                        </div>
+                                        <div class="sensor-item">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <span><i class="bi bi-droplet me-2"></i>Датчик протечки воды</span>
+                                                <span class="badge bg-success">Сухо</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Спальня -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bedroomSensors">
+                                        🛏️ Спальня
+                                    </button>
+                                </h2>
+                                <div id="bedroomSensors" class="accordion-collapse collapse">
+                                    <div class="accordion-body">
+                                        <div class="sensor-item mb-3">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <span><i class="bi bi-window me-2"></i>Датчик окна</span>
+                                                <span class="badge bg-success">Закрыто</span>
+                                            </div>
+                                        </div>
+                                        <div class="sensor-item">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <span><i class="bi bi-safe me-2"></i>Сейф</span>
+                                                <span class="badge bg-success">Заблокирован</span>
+                                            </div>
+                                            <small class="text-muted">Последний доступ: вчера 22:15</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Кнопка паники -->
+                        <div class="mt-4 pt-3 border-top">
+                            <button class="btn btn-danger w-100" onclick="triggerPanic()">
+                                <i class="bi bi-exclamation-triangle-fill me-2"></i>Тревожная кнопка
+                            </button>
+                            <small class="text-muted d-block mt-2 text-center">
+                                Удерживайте 3 секунды для активации
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Настройки и журнал -->
+        <div class="row mt-4 g-4">
+            <!-- Настройки системы -->
+            <div class="col-lg-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0"><i class="bi bi-gear me-2"></i>Настройки безопасности</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="notificationsSwitch" checked>
+                                    <label class="form-check-label" for="notificationsSwitch">
+                                        Push-уведомления
+                                    </label>
+                                </div>
+                                <div class="form-check form-switch mt-2">
+                                    <input class="form-check-input" type="checkbox" id="smsSwitch">
+                                    <label class="form-check-label" for="smsSwitch">
+                                        SMS-оповещения
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="soundSwitch" checked>
+                                    <label class="form-check-label" for="soundSwitch">
+                                        Звуковые сигналы
+                                    </label>
+                                </div>
+                                <div class="form-check form-switch mt-2">
+                                    <input class="form-check-input" type="checkbox" id="autoPoliceSwitch">
+                                    <label class="form-check-label" for="autoPoliceSwitch">
+                                        Автовызов полиции
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <label class="form-label">Доверенные номера для оповещений</label>
+                            <div class="input-group mb-2">
+                                <input type="tel" class="form-control" placeholder="+7 (XXX) XXX-XX-XX">
+                                <button class="btn btn-outline-primary" type="button">Добавить</button>
+                            </div>
+                            <small class="text-muted">Укажите номера для экстренных уведомлений</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Журнал событий -->
+            <div class="col-lg-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0"><i class="bi bi-journal-text me-2"></i>Журнал событий</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Время</th>
+                                        <th>Событие</th>
+                                        <th>Статус</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>10:45</td>
+                                        <td>Система активирована (режим "Дома")</td>
+                                        <td><span class="badge bg-info">Инфо</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>10:30</td>
+                                        <td>Датчик движения: прихожая</td>
+                                        <td><span class="badge bg-warning">Предупреждение</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>09:15</td>
+                                        <td>Открытие входной двери</td>
+                                        <td><span class="badge bg-success">Норма</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>08:00</td>
+                                        <td>Ежедневная проверка датчиков</td>
+                                        <td><span class="badge bg-success">Выполнено</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>07:30</td>
+                                        <td>Система деактивирована</td>
+                                        <td><span class="badge bg-info">Инфо</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <button class="btn btn-outline-secondary w-100 mt-2">
+                            <i class="bi bi-download me-1"></i>Скачать полный журнал
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer class="mt-5 py-4 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Охранная система</h5>
+                    <p class="mb-0">Статус: <span class="text-success">● Активна</span></p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <button class="btn btn-outline-light me-2" onclick="testSensors()">
+                        <i class="bi bi-play-circle me-1"></i>Тест системы
+                    </button>
+                    <a href="help.html#security-help" class="btn btn-light">
+                        <i class="bi bi-question-circle me-1"></i>Помощь
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/security.js"></script>
+</body>
+</html>
