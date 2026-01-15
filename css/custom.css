@@ -1,0 +1,165 @@
+/* Пользовательские стили для системы Умный дом */
+
+:root {
+    --light-warning: rgba(255, 193, 7, 0.1);
+    --light-danger: rgba(220, 53, 69, 0.1);
+    --light-info: rgba(13, 202, 240, 0.1);
+    --light-success: rgba(25, 135, 84, 0.1);
+    --light-primary: rgba(13, 110, 253, 0.1);
+}
+
+/* Общие стили */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Карточки с эффектом наведения */
+.hover-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+/* Обертки для иконок */
+.icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.bg-light-warning {
+    background-color: var(--light-warning) !important;
+}
+
+.bg-light-danger {
+    background-color: var(--light-danger) !important;
+}
+
+.bg-light-info {
+    background-color: var(--light-info) !important;
+}
+
+.bg-light-success {
+    background-color: var(--light-success) !important;
+}
+
+.bg-light-primary {
+    background-color: var(--light-primary) !important;
+}
+
+/* Карточки устройств */
+.device-control {
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border-left: 4px solid #0d6efd;
+}
+
+.device-energy {
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border: 1px solid #dee2e6;
+}
+
+/* Индикаторы статуса */
+.status-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.status-online {
+    background-color: #28a745;
+}
+
+.status-offline {
+    background-color: #dc3545;
+}
+
+.status-warning {
+    background-color: #ffc107;
+}
+
+/* Анимации */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* Отзывчивые таблицы */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* Кастомные переключатели */
+.form-switch .form-check-input:checked {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+/* Градиентные заголовки */
+.gradient-text {
+    background: linear-gradient(45deg, #0d6efd, #20c997);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Карточки камер */
+.camera-card {
+    transition: all 0.3s ease;
+}
+
+.camera-card:hover {
+    transform: scale(1.02);
+}
+
+/* Температурные дисплеи */
+.temperature-display, .humidity-display, .air-quality-display {
+    font-family: 'Courier New', monospace;
+}
+
+/* Медиа-запросы для мобильных устройств */
+@media (max-width: 768px) {
+    .display-6 {
+        font-size: 1.5rem;
+    }
+    
+    .icon-wrapper {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .icon-wrapper i {
+        font-size: 1.5rem;
+    }
+    
+    .btn-lg {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Стили для печати */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+}
