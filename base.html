@@ -1,1 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Умный дом - Главная</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+<body class="bg-light">
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-house-door-fill me-2"></i>
+                Умный дом
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="help.html">Помощь</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
+    <!-- Основной контент -->
+    <div class="container mt-5">
+        <!-- Приветствие -->
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h1 class="display-4 mb-3">Добро пожаловать в систему "Умный дом"</h1>
+                <p class="lead text-muted">Управляйте всеми системами вашего дома из единого центра</p>
+            </div>
+        </div>
+
+        <!-- Карточки функций -->
+        <div class="row g-4">
+            <!-- Свет -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm hover-card">
+                    <div class="card-body text-center p-4">
+                        <div class="icon-wrapper bg-light-warning mb-4">
+                            <i class="bi bi-lightbulb-fill text-warning fs-1"></i>
+                        </div>
+                        <h4 class="card-title mb-3">Управление светом</h4>
+                        <p class="card-text text-muted">Контроль освещения во всех комнатах, создание сцен, управление яркостью</p>
+                        <div class="mt-4">
+                            <a href="light.html" class="btn btn-warning btn-lg w-100">
+                                <i class="bi bi-arrow-right me-2"></i>Перейти
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Безопасность -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm hover-card">
+                    <div class="card-body text-center p-4">
+                        <div class="icon-wrapper bg-light-danger mb-4">
+                            <i class="bi bi-shield-lock-fill text-danger fs-1"></i>
+                        </div>
+                        <h4 class="card-title mb-3">Охранная система</h4>
+                        <p class="card-text text-muted">Мониторинг безопасности, датчики движения, камеры наблюдения</p>
+                        <div class="mt-4">
+                            <a href="security.html" class="btn btn-danger btn-lg w-100">
+                                <i class="bi bi-arrow-right me-2"></i>Перейти
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Климат -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm hover-card">
+                    <div class="card-body text-center p-4">
+                        <div class="icon-wrapper bg-light-info mb-4">
+                            <i class="bi bi-thermometer-half text-info fs-1"></i>
+                        </div>
+                        <h4 class="card-title mb-3">Климат-контроль</h4>
+                        <p class="card-text text-muted">Управление температурой, влажностью, кондиционерами и обогревателями</p>
+                        <div class="mt-4">
+                            <a href="temperature.html" class="btn btn-info btn-lg w-100 text-white">
+                                <i class="bi bi-arrow-right me-2"></i>Перейти
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Энергия -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 border-0 shadow-sm hover-card">
+                    <div class="card-body text-center p-4">
+                        <div class="icon-wrapper bg-light-success mb-4">
+                            <i class="bi bi-lightning-charge-fill text-success fs-1"></i>
+                        </div>
+                        <h4 class="card-title mb-3">Управление энергией</h4>
+                        <p class="card-text text-muted">Мониторинг потребления, оптимизация расходов, управление приборами</p>
+                        <div class="mt-4">
+                            <a href="energy.html" class="btn btn-success btn-lg w-100">
+                                <i class="bi bi-arrow-right me-2"></i>Перейти
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Быстрый статус -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0"><i class="bi bi-speedometer2 me-2"></i>Текущий статус дома</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-md-3 mb-3">
+                                <div class="p-3 bg-light rounded">
+                                    <i class="bi bi-lightbulb text-warning fs-4"></i>
+                                    <h6 class="mt-2 mb-1">Свет</h6>
+                                    <span class="badge bg-success">8 устройств активно</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="p-3 bg-light rounded">
+                                    <i class="bi bi-shield-check text-success fs-4"></i>
+                                    <h6 class="mt-2 mb-1">Безопасность</h6>
+                                    <span class="badge bg-success">Включена</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="p-3 bg-light rounded">
+                                    <i class="bi bi-thermometer text-info fs-4"></i>
+                                    <h6 class="mt-2 mb-1">Температура</h6>
+                                    <span class="badge bg-info">22.5°C</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="p-3 bg-light rounded">
+                                    <i class="bi bi-lightning text-success fs-4"></i>
+                                    <h6 class="mt-2 mb-1">Энергия</h6>
+                                    <span class="badge bg-warning">1.2 кВт/ч</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer class="mt-5 py-4 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Умный дом</h5>
+                    <p class="mb-0">Система автоматизации для вашего комфорта</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">© 2024 Все права защищены</p>
+                    <p class="mb-0">Система обновлена: <span id="currentDateTime"></span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Пользовательские скрипты -->
+    <script src="js/scripts.js"></script>
+</body>
+</html>
