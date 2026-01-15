@@ -1,7 +1,7 @@
 # Структура:
 ```text
  smart-home/
- ├── index.html              # Главная страница (base.html)
+ ├── base.html              # Главная страница (base.html)
  ├── help.html               # Страница помощи
  ├── light.html              # Управление светом
  ├── security.html           # Управление безопасностью
