@@ -1,1 +1,524 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление энергией - Умный дом</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-house-door-fill me-2"></i>
+                Умный дом
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="index.html">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="light.html">Свет</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="security.html">Безопасность</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="temperature.html">Климат</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-white fw-bold" href="energy.html">Энергия</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="help.html">Помощь</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
+    <div class="container mt-4">
+        <!-- Общая статистика -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <h1 class="display-6 mb-2"><i class="bi bi-lightning-charge-fill text-success me-2"></i>Управление энергией</h1>
+                                <p class="text-muted mb-0">Мониторинг потребления и оптимизация расходов</p>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row text-center">
+                                    <div class="col-4">
+                                        <div class="p-3">
+                                            <div class="fs-2 fw-bold text-success">1.2 кВт</div>
+                                            <small class="text-muted">Сейчас</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="p-3">
+                                            <div class="fs-2 fw-bold text-warning">24 кВт·ч</div>
+                                            <small class="text-muted">Сегодня</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="p-3">
+                                            <div class="fs-2 fw-bold text-primary">18%</div>
+                                            <small class="text-muted">Экономия</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- График потребления -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white">
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#todayTab">Сегодня</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#weekTab">Неделя</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#monthTab">Месяц</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="todayTab">
+                                <div class="graph-placeholder bg-light rounded p-4 text-center" style="height: 200px;">
+                                    <i class="bi bi-bar-chart fs-1 text-success"></i>
+                                    <p class="mt-2">График потребления энергии за сегодня</p>
+                                    <small class="text-muted">Пик: 2.4 кВт в 19:30</small>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="weekTab">
+                                <div class="graph-placeholder bg-light rounded p-4 text-center" style="height: 200px;">
+                                    <i class="bi bi-graph-up fs-1 text-success"></i>
+                                    <p class="mt-2">График потребления за неделю</p>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="monthTab">
+                                <div class="graph-placeholder bg-light rounded p-4 text-center" style="height: 200px;">
+                                    <i class="bi bi-calendar-heart fs-1 text-success"></i>
+                                    <p class="mt-2">График потребления за месяц</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Потребление по комнатам -->
+        <div class="row g-4">
+            <!-- Кухня -->
+            <div class="col-lg-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-success bg-opacity-25 d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-cup me-2"></i>Кухня</h5>
+                        <span class="badge bg-warning">35% от общего потребления</span>
+                    </div>
+                    <div class="card-body">
+                        <!-- Холодильник -->
+                        <div class="device-energy mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div>
+                                    <h6 class="mb-0"><i class="bi bi-snow me-2"></i>Холодильник</h6>
+                                    <small class="text-muted">Samsung, 2021</small>
+                                </div>
+                                <div class="text-end">
+                                    <div class="fw-bold text-success">0.15 кВт</div>
+                                    <small class="text-muted">сейчас</small>
+                                </div>
+                            </div>
+                            <div class="progress mb-2" style="height: 10px;">
+                                <div class="progress-bar bg-success" style="width: 60%"></div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <small>Энергопотребление</small>
+                                <small>60% от нормы</small>
+                            </div>
+                            <div class="mt-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="fridgeEcoSwitch" checked>
+                                    <label class="form-check-label" for="fridgeEcoSwitch">
+                                        Эко-режим (в ночное время)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Стиральная машина -->
+                        <div class="device-energy mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div>
+                                    <h6 class="mb-0"><i class="bi bi-thermometer-snow me-2"></i>Стиральная машина</h6>
+                                    <small class="text-muted">LG, 2022</small>
+                                </div>
+                                <div class="text-end">
+                                    <div class="fw-bold">0 кВт</div>
+                                    <small class="text-muted">неактивна</small>
+                                </div>
+                            </div>
+                            <div class="alert alert-info py-2">
+                                <small><i class="bi bi-info-circle me-1"></i>Запланирована стирка на 23:00 (ночной тариф)</small>
+                            </div>
+                            <div class="mt-2">
+                                <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#scheduleWashModal">
+                                    <i class="bi bi-clock me-1"></i>Настроить расписание
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Посудомоечная -->
+                        <div class="device-energy">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div>
+                                    <h6 class="mb-0"><i class="bi bi-droplet me-2"></i>Посудомоечная машина</h6>
+                                    <small class="text-muted">Bosch, 2023</small>
+                                </div>
+                                <div class="text-end">
+                                    <div class="fw-bold text-warning">0.8 кВт</div>
+                                    <small class="text-muted">в работе</small>
+                                </div>
+                            </div>
+                            <div class="progress mb-2" style="height: 10px;">
+                                <div class="progress-bar bg-warning" style="width: 45%"></div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <small>Осталось: 30 минут</small>
+                                <small>Эко-программа</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Гостиная -->
+            <div class="col-lg-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-warning bg-opacity-25 d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-house-door me-2"></i>Гостиная</h5>
+                        <span class="badge bg-warning">25% от общего потребления</span>
+                    </div>
+                    <div class="card-body">
+                        <!-- Телевизор -->
+                        <div class="device-energy mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div>
+                                    <h6 class="mb-0"><i class="bi bi-tv me-2"></i>Телевизор</h6>
+                                    <small class="text-muted">Sony, 2022, 65"</small>
+                                </div>
+                                <div class="text-end">
+                                    <div class="fw-bold text-success">0.12 кВт</div>
+                                    <small class="text-muted">включен</small>
+                                </div>
+                            </div>
+                            <div class="progress mb-2" style="height: 10px;">
+                                <div class="progress-bar bg-success" style="width: 40%"></div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <small>Энергопотребление</small>
+                                <small>Эко-режим активен</small>
+                            </div>
+                            <div class="mt-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="tvAutoOffSwitch" checked>
+                                    <label class="form-check-label" for="tvAutoOffSwitch">
+                                        Автовыключение в 1:00
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Медиасистема -->
+                        <div class="device-energy mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div>
+                                    <h6 class="mb-0"><i class="bi bi-speaker me-2"></i>Медиасистема</h6>
+                                    <small class="text-muted">Soundbar + сабвуфер</small>
+                                </div>
+                                <div class="text-end">
+                                    <div class="fw-bold">0.02 кВт</div>
+                                    <small class="text-muted">режим ожидания</small>
+                                </div>
+                            </div>
+                            <div class="alert alert-warning py-2">
+                                <small><i class="bi bi-exclamation-triangle me-1"></i>Потребление в режиме ожидания можно уменьшить</small>
+                            </div>
+                            <div class="mt-2">
+                                <button class="btn btn-outline-warning btn-sm" onclick="optimizeStandbyPower()">
+                                    <i class="bi bi-magic me-1"></i>Оптимизировать
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Кондиционер -->
+                        <div class="device-energy">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div>
+                                    <h6 class="mb-0"><i class="bi bi-snow2 me-2"></i>Кондиционер</h6>
+                                    <small class="text-muted">Управляется в разделе "Климат"</small>
+                                </div>
+                                <div class="text-end">
+                                    <div class="fw-bold text-info">0.9 кВт</div>
+                                    <small class="text-muted">основной потребитель</small>
+                                </div>
+                            </div>
+                            <div class="progress mb-2" style="height: 10px;">
+                                <div class="progress-bar bg-info" style="width: 75%"></div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <small>Рекомендация: повысить температуру на 1°C</small>
+                                <small>-8% энергии</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Спальня -->
+            <div class="col-lg-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-info bg-opacity-25 d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-moon me-2"></i>Спальня</h5>
+                        <span class="badge bg-info">15% от общего потребления</span>
+                    </div>
+                    <div class="card-body">
+                        <!-- Зарядные устройства -->
+                        <div class="device-energy mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div>
+                                    <h6 class="mb-0"><i class="bi bi-battery-charging me-2"></i>Зарядные устройства</h6>
+                                    <small class="text-muted">Телефоны, планшеты</small>
+                                </div>
+                                <div class="text-end">
+                                    <div class="fw-bold">0.05 кВт</div>
+                                    <small class="text-muted">в зарядке</small>
+                                </div>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="chargeScheduleSwitch" checked>
+                                <label class="form-check-label" for="chargeScheduleSwitch">
+                                    Зарядка только ночью (23:00-07:00)
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Обогреватель -->
+                        <div class="device-energy">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div>
+                                    <h6 class="mb-0"><i class="bi bi-thermometer-sun me-2"></i>Обогреватель</h6>
+                                    <small class="text-muted">Управляется в разделе "Климат"</small>
+                                </div>
+                                <div class="text-end">
+                                    <div class="fw-bold text-warning">0.6 кВт</div>
+                                    <small class="text-muted">включен</small>
+                                </div>
+                            </div>
+                            <div class="alert alert-success py-2">
+                                <small><i class="bi bi-check-circle me-1"></i>Работает по энергоэффективному расписанию</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ванная и коридор -->
+            <div class="col-lg-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-primary bg-opacity-25 d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-lightbulb me-2"></i>Ванная и коридор</h5>
+                        <span class="badge bg-primary">10% от общего потребления</span>
+                    </div>
+                    <div class="card-body">
+                        <!-- Бойлер -->
+                        <div class="device-energy mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div>
+                                    <h6 class="mb-0"><i class="bi bi-fire me-2"></i>Бойлер</h6>
+                                    <small class="text-muted">Водонагреватель 80л</small>
+                                </div>
+                                <div class="text-end">
+                                    <div class="fw-bold text-danger">2.0 кВт</div>
+                                    <small class="text-muted">нагрев</small>
+                                </div>
+                            </div>
+                            <div class="progress mb-2" style="height: 10px;">
+                                <div class="progress-bar bg-danger" style="width: 90%"></div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <small>Температура воды: 65°C</small>
+                                <button class="btn btn-sm btn-outline-danger" onclick="reduceBoilerTemp()">
+                                    Уменьшить
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Свет (коридор) -->
+                        <div class="device-energy">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div>
+                                    <h6 class="mb-0"><i class="bi bi-lightbulb me-2"></i>Освещение коридора</h6>
+                                    <small class="text-muted">LED, датчик движения</small>
+                                </div>
+                                <div class="text-end">
+                                    <div class="fw-bold">0.01 кВт</div>
+                                    <small class="text-muted">экономно</small>
+                                </div>
+                            </div>
+                            <div class="alert alert-info py-2">
+                                <small><i class="bi bi-info-circle me-1"></i>Автоматическое выключение через 2 минуты</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Рекомендации и тарифы -->
+        <div class="row mt-4 g-4">
+            <!-- Рекомендации -->
+            <div class="col-lg-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0"><i class="bi bi-lightbulb me-2"></i>Рекомендации по экономии</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            <div class="list-group-item">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">Понизьте температуру бойлера</h6>
+                                    <small class="text-success">Экономия: 15%</small>
+                                </div>
+                                <p class="mb-1">Снижение с 65°C до 55°C уменьшит потребление</p>
+                            </div>
+                            <div class="list-group-item">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">Перенесите стирку на ночь</h6>
+                                    <small class="text-success">Экономия: 30%</small>
+                                </div>
+                                <p class="mb-1">Ночной тариф дешевле дневного</p>
+                            </div>
+                            <div class="list-group-item">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">Включите эко-режим у холодильника</h6>
+                                    <small class="text-success">Экономия: 8%</small>
+                                </div>
+                                <p class="mb-1">Уже активирован ✓</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-success w-100 mt-3" onclick="applyAllRecommendations()">
+                            <i class="bi bi-check-circle me-1"></i>Применить все рекомендации
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Тарифы и цели -->
+            <div class="col-lg-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0"><i class="bi bi-cash-coin me-2"></i>Тарифы и цели</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-4">
+                            <h6>Текущий тариф</h6>
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <strong>Двухтарифный</strong>
+                                            <div class="text-muted">День: 5.80 ₽/кВт·ч</div>
+                                            <div class="text-muted">Ночь: 2.50 ₽/кВт·ч</div>
+                                        </div>
+                                        <div class="text-end">
+                                            <div class="fw-bold">2 850 ₽</div>
+                                            <small class="text-muted">прогноз за месяц</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Цель экономии на месяц</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" value="20" min="0" max="50">
+                                <span class="input-group-text">%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="progress mb-2" style="height: 20px;">
+                            <div class="progress-bar bg-success" style="width: 65%">65% от цели</div>
+                        </div>
+                        
+                        <small class="text-muted">Вы экономите 18% по сравнению с прошлым месяцем</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer class="mt-5 py-4 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Управление энергией</h5>
+                    <p class="mb-0">Экономия за месяц: <span class="text-success">1 240 ₽</span></p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <button class="btn btn-outline-light me-2" onclick="generateEnergyReport()">
+                        <i class="bi bi-file-earmark-text me-1"></i>Отчет
+                    </button>
+                    <a href="help.html#energy-help" class="btn btn-light">
+                        <i class="bi bi-question-circle me-1"></i>Помощь
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно расписания стирки -->
+    <div class="modal fade" id="scheduleWashModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Настройка расписания стирки</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Настройте время запуска стиральной машины...</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-primary">Сохранить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/energy-control.js"></script>
+</body>
+</html>
